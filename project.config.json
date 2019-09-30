@@ -7,7 +7,7 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
-		"enhance": true,
+		"enhance": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -20,7 +20,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",

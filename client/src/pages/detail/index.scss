@@ -1,0 +1,61 @@
+$color-brand: #f28e16;
+@import "~taro-ui/dist/style/components/fab.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-ui/dist/style/components/action-sheet.scss";
+@import "~taro-ui/dist/style/components/card.scss";
+@import "~taro-ui/dist/style/components/button.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .container__desc {
+    margin: 50rpx 0;
+  }
+  .container__card {
+    width: 700rpx;
+    margin: 50rpx 0;
+  }
+  .float-button {
+    position: fixed;
+    bottom: 50rpx;
+    right: 50rpx;
+    .sheet__item {
+      position: relative;
+    }
+  }
+  .share {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    opacity: 0;
+  }
+}
+
+.way__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 200rpx;
+  padding: 0 40rpx;
+  border-bottom: 2rpx solid #eee;
+  .way__item-icon {
+    width: 130rpx;
+    height: 130rpx;
+  }
+  .way__item-text {
+    flex: 1;
+    padding: 0 30rpx;
+    font-size: 34rpx;
+    font-weight: 600;
+  }
+  .way__item-button {
+    height: 70rpx;
+    line-height: 70rpx;
+    min-width: 120rpx;
+  }
+}

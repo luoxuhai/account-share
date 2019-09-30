@@ -40,7 +40,7 @@ const config = {
           config: {
             browsers: [
               'last 3 versions',
-              'Android >= 4.1',
+              'Android >= 5.1',
               'ios >= 8'
             ]
           }

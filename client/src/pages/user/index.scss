@@ -1,0 +1,64 @@
+$color-brand: #f28e16;
+@import "../../app.scss";
+@import "~taro-ui/dist/style/components/avatar.scss";
+@import "~taro-ui/dist/style/components/button.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .user__container {
+    display: flex;
+    align-items: center;
+    height: 340rpx;
+    padding: 0 100rpx;
+    background-color: $themeColor;
+    .user__container-desc {
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 40rpx;
+      color: #f5f5f5;
+      .user__container-name {
+        font-weight: 500;
+        font-size: 36rpx;
+      }
+      .user__container-integration {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 36rpx;
+        .integration-text {
+          font-size: 46rpx;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .way__container {
+    .way__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 200rpx;
+      padding: 0 40rpx;
+      border-bottom: 2rpx solid #eee;
+      .way__item-icon {
+        width: 130rpx;
+        height: 130rpx;
+      }
+      .way__item-text {
+        flex: 1;
+        height: 100rpx;
+        padding: 0 30rpx;
+        font-size: 34rpx;
+        font-weight: 600;
+      }
+      .way__item-button {
+        height: 70rpx;
+        line-height: 70rpx;
+        min-width: 120rpx;
+      }
+    }
+  }
+}

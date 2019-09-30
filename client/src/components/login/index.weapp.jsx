@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Button } from 'src/pages/home/node_modules/@tarojs/components';
+import { View, Text, Button } from '@tarojs/components';
 
 export default class Login extends Component {
   state = {

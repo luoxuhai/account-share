@@ -1,0 +1,25 @@
+$color-brand: #f28e16;
+@import "../../app.scss";
+@import "~taro-ui/dist/style/components/list.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+
+.at-list__item {
+  @include center;
+  height: 200rpx;
+  .at-list__item-thumb {
+    width: 140rpx;
+    height: 140rpx;
+  }
+  .at-list__item-content {
+    height: calc(200rpx - 48rpx);
+    .item-content__info {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      height: inherit;
+    }
+  }
+  .item-extra {
+    flex: 0;
+  }
+}
