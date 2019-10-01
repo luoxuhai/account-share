@@ -14,19 +14,19 @@ export default class Index extends Component {
       {
         title: '百度云VIP',
         updatedAt: '更新时间: 2019-09-30 07:44:10',
-        thumb:
+        cover:
           'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png'
       },
       {
         title: '百度云VIP',
         updatedAt: '更新时间: 2019-09-30 07:44:10',
-        thumb:
+        cover:
           'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png'
       },
       {
         title: '百度云VIP',
         updatedAt: '更新时间: 2019-09-30 07:44:10',
-        thumb:
+        cover:
           'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png'
       }
     ]
@@ -42,9 +42,9 @@ export default class Index extends Component {
 
   componentDidHide() {}
 
-  handleEnterClick = title => {
+  handleEnterClick = (id, title, cover) => {
     Taro.navigateTo({
-      url: `/pages/detail/index?title=${title}`
+      url: `/pages/detail/index?id=${id}&title=${title}&cover=${cover}`
     });
     Taro.showNavigationBarLoading();
   };
@@ -59,8 +59,8 @@ export default class Index extends Component {
               title={item.title}
               note={item.updatedAt}
               arrow='right'
-              thumb={item.thumb}
-              onClick={() => this.handleEnterClick(item.title)}
+              thumb={item.cover}
+              onClick={() => this.handleEnterClick(item._id, item.title, item.cover)}
             />
           ))}
         </AtList>

@@ -49,7 +49,6 @@ class App extends Component {
     },
     cloud: true,
     style: 'v2',
-    debug: true
   };
 
   componentDidMount() {

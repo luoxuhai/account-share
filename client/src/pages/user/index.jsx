@@ -13,7 +13,7 @@ export default class Index extends Component {
 
   componentWillMount() {
     Taro.showShareMenu({
-      withShareTicket: true
+      withShareTicket: false
     });
   }
   componentDidMount() {}

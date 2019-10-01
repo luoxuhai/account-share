@@ -6,7 +6,8 @@ import {
   AtActionSheetItem,
   AtCard,
   AtButton,
-  AtIcon
+  AtIcon,
+  AtDivider
 } from 'taro-ui';
 import './index.scss';
 
@@ -17,12 +18,21 @@ export default class Index extends Component {
 
   state = {
     isOpened: false,
-    cover: ''
+    cover: '',
+    detail: {
+      desc: '提供免费的文件保存和下载加速服务',
+      hint:
+        '提供免费的文件保存和下载加速服务提供免费的文件保存和下载加速服务提供免费的文件保存和下载加速服务提供免费的文件保存和下载加速服务提供免费的文件保存和下载加速服务',
+      
+    }
   };
   componentWillMount() {
-    const { title } = this.$router.params;
+    const { title, cover } = this.$router.params;
     Taro.setNavigationBarTitle({
       title
+    });
+    this.setState({
+      cover
     });
   }
 
@@ -51,46 +61,44 @@ export default class Index extends Component {
   render() {
     return (
       <View className='container'>
-        {/* <Image></Image> */}
+        <Image className='container__cover' src={this.state.cover} />
+        <AtDivider className='container__divider' lineColor='#f28e16'>
+          <AtIcon value='sketch' />
+        </AtDivider>
         <Text className='container__desc'>
-          提供免费的文件保存和下载加速服务
+        {this.state.detail.desc}
         </Text>
         <AtCard
           className='container__card'
           title='特别提示'
-          thumb='http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png'
+          thumb={require('../../assets/images/tip.svg')}
         >
-          这也是内容区 可以随意定义功能这也是内容区 可以随意定义功能这也是内容区
-          可以随意定义功能这也是内容区 可以随意定义功能这也是内容区
-          可以随意定义功能这也是内容区 可以随意定义功能
+          {this.state.detail.hint}
         </AtCard>
         <View className='way__container'>
-          <View className='way__item'>
+          <View className='way__account'>
             <AtIcon value='mail' size='20' color='#f28e16'></AtIcon>
-            <View className='way__item-text'>
+            <View className='way__account-text'>
               <Text>分享得积分</Text>
             </View>
             <AtButton
-              className='way__item-button'
+              className='way__account-button'
               size='small'
-              type='secondary'
+              type='primary'
             >
               复制
             </AtButton>
           </View>
-          <View className='way__item'>
-            <AtIcon value='eye' size='25' color='#f28e16'></AtIcon>
-            <View className='way__item-text'>
+          <View className='way__pass'>
+            <AtIcon value='help' size='20' color='#f28e16'></AtIcon>
+            <View className='way__pass-text'>
               <Text>分享得积分</Text>
             </View>
-            <AtButton
-              className='way__item-button'
-              size='small'
-              type='secondary'
-            >
-              复制
-            </AtButton>
+            <Text className='way__pass-tip'>有效期为1天, 每天更新</Text>
           </View>
+          <AtButton className='way__get-button' type='primary'>
+            获取密码
+          </AtButton>
         </View>
         <View className='float-button'>
           <AtFab onClick={this.onButtonClick}>
