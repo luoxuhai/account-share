@@ -8,7 +8,8 @@ import {
   AtCard,
   AtButton,
   AtIcon,
-  AtDivider
+  AtDivider,
+  AtActivityIndicator
 } from 'taro-ui';
 import './index.scss';
 
@@ -38,6 +39,7 @@ export default class Index extends Component {
 
   componentWillMount() {
     const { title, cover, _id } = this.$router.params;
+    Taro.showNavigationBarLoading();
     this._id = _id;
     Taro.setNavigationBarTitle({
       title
@@ -45,10 +47,6 @@ export default class Index extends Component {
 
     this.setState({
       cover
-    });
-
-    this.props.dispatch({
-      type: 'common/login'
     });
 
     Taro.cloud
@@ -69,6 +67,10 @@ export default class Index extends Component {
           }
         );
       });
+
+    this.props.dispatch({
+      type: 'common/login'
+    });
   }
 
   componentDidShow() {
@@ -158,7 +160,14 @@ export default class Index extends Component {
           title='特别提示'
           thumb={require('../../assets/images/tip.svg')}
         >
-          {detail.hint}
+          {detail.account ? (
+            detail.hint
+          ) : (
+            <AtActivityIndicator
+              mode='center'
+              color='#f28e16'
+            ></AtActivityIndicator>
+          )}
         </AtCard>
         <View className='way__container'>
           <View className='way__account'>
@@ -206,7 +215,7 @@ export default class Index extends Component {
             <Text className='at-fab__icon at-icon at-icon-menu'></Text>
           </AtFab>
         </View>
-        <AtActionSheet isOpened={isOpened} title='分享得积分'>
+        <AtActionSheet isOpened={isOpened} title='分享得积分' cancelText='取消'>
           <AtActionSheetItem onClick={this.handleToHomeClick}>
             首页
           </AtActionSheetItem>

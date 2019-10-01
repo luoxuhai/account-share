@@ -21,6 +21,7 @@ $color-brand: #f28e16;
       .user__container-name {
         font-weight: 500;
         font-size: 36rpx;
+        min-height: 56rpx;
       }
       .user__container-integration {
         display: flex;
@@ -49,15 +50,24 @@ $color-brand: #f28e16;
       }
       .way__item-text {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         height: 100rpx;
         padding: 0 30rpx;
         font-size: 34rpx;
         font-weight: 600;
+        color: $color-brand;
+        text:last-child {
+          font-size: 32rpx;
+          font-weight: 400;
+          color: #888;
+        }
       }
       .way__item-button {
-        height: 70rpx;
-        line-height: 70rpx;
-        min-width: 120rpx;
+        height: 60rpx;
+        line-height: 60rpx;
+        min-width: 110rpx;
       }
     }
   }

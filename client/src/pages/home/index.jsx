@@ -11,7 +11,10 @@ import './index.scss';
 export default class Index extends Component {
   config = {
     navigationBarTitleText: '账号分享',
-    navigationBarTextStyle: 'black'
+    navigationBarTextStyle: 'black',
+    enablePullDownRefresh: true,
+    backgroundTextStyle: 'dark',
+    backgroundColor: '#f7f7f7'
   };
 
   state = {
@@ -38,11 +41,17 @@ export default class Index extends Component {
   };
 
   componentWillMount() {
-    Taro.showNavigationBarLoading();
+    this.onLoad();
     this.props.dispatch({
       type: 'common/login'
     });
+  }
 
+  onPullDownRefresh() {
+    this.onLoad();
+  }
+
+  onLoad = () => {
     Taro.cloud
       .callFunction({
         name: 'getList'
@@ -55,10 +64,11 @@ export default class Index extends Component {
           },
           () => {
             Taro.hideNavigationBarLoading();
+            Taro.stopPullDownRefresh();
           }
         );
       });
-  }
+  };
 
   handleEnterClick = (id, title, cover) => {
     Taro.navigateTo({
@@ -69,7 +79,7 @@ export default class Index extends Component {
 
   render() {
     return (
-      <View className='index'>
+      <View className='conatiner'>
         <AtList>
           {this.state.list.map((item, index) => (
             <AtListItem

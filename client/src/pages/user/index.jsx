@@ -73,6 +73,7 @@ export default class Index extends Component {
             />
             <View className='way__item-text'>
               <Text>分享得积分</Text>
+              <Text>每次分享可获得1积分</Text>
             </View>
             <AtButton
               className='way__item-button'

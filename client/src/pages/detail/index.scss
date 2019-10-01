@@ -5,6 +5,8 @@ $color-brand: #f28e16;
 @import "~taro-ui/dist/style/components/card.scss";
 @import "~taro-ui/dist/style/components/button.scss";
 @import "~taro-ui/dist/style/components/divider.scss";
+@import "~taro-ui/dist/style/components/activity-indicator.scss";
+@import "~taro-ui/dist/style/components/loading.scss";
 
 .container {
   display: flex;
@@ -14,15 +16,16 @@ $color-brand: #f28e16;
     width: 200rpx;
     height: 200rpx;
   }
-  .container__desc {
-    // margin: 50rpx 0;
-  }
   .container__divider {
     width: 700rpx;
   }
   .container__card {
     width: 700rpx;
     margin: 50rpx 0;
+    .at-card__content {
+      position: relative;
+      min-height: 20rpx;
+    }
   }
   .float-button {
     position: fixed;
@@ -46,6 +49,9 @@ $color-brand: #f28e16;
 
 .way__container {
   width: 700rpx;
+  .way__account {
+    margin-bottom: 20rpx;
+  }
   .way__account,
   .way__pass {
     display: flex;
@@ -57,24 +63,17 @@ $color-brand: #f28e16;
       width: 130rpx;
       height: 130rpx;
     }
-    .way__pass-icon {
-    }
     .way__account-text,
     .way__pass-text {
       flex: 1;
       padding: 0 30rpx;
       font-size: 34rpx;
       font-weight: 500;
-      color: #0081ff
-    }
-    .way__account-button {
-      height: 70rpx;
-      line-height: 70rpx;
-      min-width: 120rpx;
+      color: #0081ff;
     }
     .way__pass-tip {
       color: #f00;
-      font-size: 28rpx
+      font-size: 28rpx;
     }
   }
 }
