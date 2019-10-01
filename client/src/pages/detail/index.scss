@@ -23,12 +23,22 @@ $color-brand: #f28e16;
   .container__desc {
     width: 700rpx;
   }
+  .container__feedback {
+    margin-bottom: 20rpx;
+    background: #ff4949;
+  }
   .container__card {
     width: 700rpx;
     margin: 50rpx 0;
+    .at-card__header-title {
+      color: #ff4949;
+    }
     .at-card__content {
       position: relative;
       min-height: 20rpx;
+    }
+    .at-card__content-info {
+      font-size: 32rpx;
     }
   }
   .float-button {

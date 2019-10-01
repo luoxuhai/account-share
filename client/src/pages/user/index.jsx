@@ -20,6 +20,18 @@ export default class Index extends Component {
     Taro.showShareMenu({
       withShareTicket: true
     });
+    // Taro.cloud
+    //   .getTempFileURL({
+    //     fileList: [
+    //       {
+    //         fileID: 'cloud://test-vdw8v.7465-test-vdw8v/share.png',
+    //         maxAge: 60 * 60 * 24
+    //       }
+    //     ]
+    //   })
+    //   .then(res => {
+    //     this.shareCover = res.fileList[0].tempFileURL;
+    //   });
   }
 
   componentDidShow() {
@@ -34,9 +46,9 @@ export default class Index extends Component {
 
   onShareAppMessage() {
     return {
-      title: 'VIP账号分享',
-      path: '/page/home/index',
-      imageUrl: ''
+      title: '免费获取VIP账号',
+      path: '/pages/home/index',
+      imageUrl: '../../assets/images/share.png'
     };
   }
 

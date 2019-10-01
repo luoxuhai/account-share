@@ -74,6 +74,7 @@ export default class Index extends Component {
   }
 
   componentDidShow() {
+    Taro.hideLoading();
     if (this.isShare) {
       this.props.dispatch({
         type: 'common/putIntegral',
@@ -81,6 +82,14 @@ export default class Index extends Component {
       });
       this.isShare = false;
     }
+  }
+
+  onShareAppMessage() {
+    return {
+      title: '免费获取VIP账号',
+      path: '/pages/home/index',
+      imageUrl: '../../assets/images/share.png'
+    };
   }
 
   onButtonClick = () => {
@@ -146,6 +155,12 @@ export default class Index extends Component {
       });
   };
 
+  handleFeedbackClick = () => {
+    Taro.showLoading({
+      title: '加载中'
+    });
+  };
+
   render() {
     const { password, cover, detail, isOpened, isLoading } = this.state;
     return (
@@ -169,6 +184,15 @@ export default class Index extends Component {
             ></AtActivityIndicator>
           )}
         </AtCard>
+        <AtButton
+          className='container__feedback'
+          openType='feedback'
+          type='primary'
+          size='small'
+          onClick={this.handleFeedbackClick}
+        >
+          反馈报错
+        </AtButton>
         <View className='way__container'>
           <View className='way__account'>
             <AtIcon value='mail' size='20' color='#f28e16'></AtIcon>
