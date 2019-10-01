@@ -41,6 +41,7 @@ export default class Index extends Component {
   };
 
   componentWillMount() {
+    Taro.showNavigationBarLoading();
     this.onLoad();
     this.props.dispatch({
       type: 'common/login'
@@ -74,7 +75,6 @@ export default class Index extends Component {
     Taro.navigateTo({
       url: `/pages/detail/index?_id=${id}&title=${title}&cover=${cover}`
     });
-    Taro.showNavigationBarLoading();
   };
 
   render() {
