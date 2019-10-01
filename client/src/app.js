@@ -4,9 +4,8 @@ import { Provider } from '@tarojs/redux';
 import dva from './utils/dva';
 import models from './models';
 import Home from './pages/home/index';
-
 import './app.scss';
-
+ 
 const dvaApp = dva.createApp({
   initialState: {},
   models: models
@@ -48,7 +47,7 @@ class App extends Component {
       ]
     },
     cloud: true,
-    style: 'v2',
+    style: 'v2'
   };
 
   componentDidMount() {

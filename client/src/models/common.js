@@ -1,19 +1,53 @@
 import Taro from '@tarojs/taro';
 
 export default {
-  namespace: 'global',
+  namespace: 'common',
   state: {
-    access_token: Taro.getStorageSync('access_token'),
-    nickname: Taro.getStorageSync('user_info')
-      ? Taro.getStorageSync('user_info').nickname
-      : ''
+    openid: Taro.getStorageSync('openid') || '',
+    integral: 0
   },
 
-  effects: {},
+  effects: {
+    *login(_, { put }) {
+      const { openid, integral } = (yield Taro.cloud.callFunction({
+        name: 'login'
+      })).result.user;
+
+      if (openid) {
+        yield put({
+          type: 'saveOpenid',
+          payload: openid
+        });
+        yield put({
+          type: 'saveIntegral',
+          payload: integral
+        });
+      }
+    },
+
+    *putIntegral({ payload: integral }, { put }) {
+      yield Taro.cloud.callFunction({
+        name: 'putIntegral',
+        data: {
+          integral
+        }
+      });
+
+      yield put({
+        type: 'saveIntegral',
+        payload: integral
+      });
+    }
+  },
 
   reducers: {
-    save(state, { payload }) {
-      return { ...state, ...payload };
+    saveIntegral(state, { payload }) {
+      return { ...state, integral: payload };
+    },
+
+    saveOpenid(state, { payload }) {
+      Taro.setStorageSync('openid', payload);
+      return { ...state, openid: payload };
     }
   }
 };

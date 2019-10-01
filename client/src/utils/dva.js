@@ -8,7 +8,7 @@ let dispatch;
 
 function createApp(opt) {
   // redux日志
-  opt.onAction = [createLogger()];
+  if (process.env.NODE_ENV !== 'production') opt.onAction = [createLogger()];
   app = create(opt);
   app.use(createLoading({}));
 
@@ -30,4 +30,4 @@ export default {
   getDispatch() {
     return app.dispatch;
   }
-}
+};

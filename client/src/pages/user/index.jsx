@@ -1,9 +1,12 @@
 import Taro, { Component } from '@tarojs/taro';
+import { connect } from '@tarojs/redux';
 import { View, Image, Text } from '@tarojs/components';
 import { AtAvatar, AtButton } from 'taro-ui';
-import share from '../../assets/images/share.svg';
 import './index.scss';
 
+@connect(({ common }) => ({
+  ...common
+}))
 export default class Index extends Component {
   config = {
     navigationBarTitleText: '我的',
@@ -11,18 +14,23 @@ export default class Index extends Component {
     navigationBarTextStyle: 'white'
   };
 
+  isShare = false;
+
   componentWillMount() {
     Taro.showShareMenu({
-      withShareTicket: false
+      withShareTicket: true
     });
   }
-  componentDidMount() {}
 
-  componentWillUnmount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
+  componentDidShow() {
+    if (this.isShare) {
+      this.props.dispatch({
+        type: 'common/putIntegral',
+        payload: this.props.integral + 1
+      });
+      this.isShare = false;
+    }
+  }
 
   onShareAppMessage() {
     return {
@@ -32,7 +40,12 @@ export default class Index extends Component {
     };
   }
 
+  handleShareClick = () => {
+    this.isShare = true;
+  };
+
   render() {
+    const { integral } = this.props;
     return (
       <View className='container'>
         <View className='user__container'>
@@ -47,13 +60,17 @@ export default class Index extends Component {
               <open-data type='userNickName' />
             </View>
             <View className='user__container-integration'>
-              积分: <View className='integration-text'>15</View>
+              积分：<View className='integration-text'>{integral}</View>
             </View>
           </View>
         </View>
         <View className='way__container'>
           <View className='way__item'>
-            <Image className='way__item-icon' src={share} mode='aspectFill' />
+            <Image
+              className='way__item-icon'
+              src={require('../../assets/images/share.svg')}
+              mode='aspectFill'
+            />
             <View className='way__item-text'>
               <Text>分享得积分</Text>
             </View>
@@ -62,6 +79,7 @@ export default class Index extends Component {
               openType='share'
               size='small'
               type='secondary'
+              onClick={this.handleShareClick}
             >
               分享
             </AtButton>
