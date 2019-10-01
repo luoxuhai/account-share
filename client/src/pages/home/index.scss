@@ -10,6 +10,13 @@ $color-brand: #f28e16;
     width: 140rpx;
     height: 140rpx;
   }
+  .item-content__info-title {
+    @include textOverflowMulti(2);
+    white-space: normal;
+  }
+  .at-list__item-container {
+    max-width: 750rpx - 48rpx;
+  }
   .at-list__item-content {
     height: calc(200rpx - 48rpx);
     .item-content__info {

@@ -5,3 +5,17 @@ $themeColor: #f28e16;
   justify-content: center;
   align-items: center;
 }
+
+@mixin textOverflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+@mixin textOverflowMulti($line: 3) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+}
