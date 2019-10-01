@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { AtList, AtListItem } from 'taro-ui';
+import moment from 'moment';
 import './index.scss';
 
 @connect(({ common }) => ({
@@ -74,7 +75,7 @@ export default class Index extends Component {
             <AtListItem
               key={index}
               title={item.title}
-              note={item.updatedAt}
+              note={moment(item.updatedAt).format('YYYY年MM月DD日 HH:mm:ss')}
               arrow='right'
               thumb={item.cover}
               onClick={() =>
