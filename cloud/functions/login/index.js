@@ -11,16 +11,18 @@ exports.main = async () => {
     openid: wxContext.OPENID
   }).get();
 
+  const userData = {
+    openid: wxContext.OPENID,
+    integral: 0
+  }
+
   if (!data.length) {
    await db.collection('users').add({
-      data: {
-       openid: wxContext.OPENID,
-       integral: 0
-      }
+      data: userData
     })
   }
 
   return {
-    user: data[0]
+    user: data.length ? data[0] : userData
   }
 }
