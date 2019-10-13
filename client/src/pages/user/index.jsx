@@ -48,7 +48,7 @@ export default class Index extends Component {
     return {
       title: '免费获取VIP账号',
       path: '/pages/home/index',
-      imageUrl: '../../assets/images/share.png'
+      imageUrl: require('../../assets/images/share.png')
     };
   }
 

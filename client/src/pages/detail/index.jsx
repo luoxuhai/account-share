@@ -88,13 +88,19 @@ export default class Index extends Component {
     return {
       title: '免费获取VIP账号',
       path: '/pages/home/index',
-      imageUrl: '../../assets/images/share.png'
+      imageUrl: require('../../assets/images/share.png')
     };
   }
 
   onButtonClick = () => {
     this.setState({
       isOpened: true
+    });
+  };
+
+  handleCloseSheet = () => {
+    this.setState({
+      isOpened: false
     });
   };
 
@@ -165,7 +171,7 @@ export default class Index extends Component {
     const { password, cover, detail, isOpened, isLoading } = this.state;
     return (
       <View className='container'>
-        <Image className='container__cover' src={cover} />
+        <Image className='container__cover' src={cover} mode='aspectFill' />
         <AtDivider className='container__divider' lineColor='#f28e16'>
           <AtIcon value='sketch' />
         </AtDivider>
@@ -239,7 +245,13 @@ export default class Index extends Component {
             <Text className='at-fab__icon at-icon at-icon-menu'></Text>
           </AtFab>
         </View>
-        <AtActionSheet isOpened={isOpened} title='分享得积分' cancelText='取消'>
+        <AtActionSheet
+          isOpened={isOpened}
+          onClose={this.handleCloseSheet}
+          onCancel={this.handleCloseSheet}
+          title='分享得积分'
+          cancelText='取消'
+        >
           <AtActionSheetItem onClick={this.handleToHomeClick}>
             首页
           </AtActionSheetItem>
