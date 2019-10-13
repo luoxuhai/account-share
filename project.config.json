@@ -3,7 +3,7 @@
 	"cloudfunctionRoot": "cloud/functions/",
 	"projectname": "vip%E8%B4%A6%E5%8F%B7%E5%88%86%E4%BA%AB",
 	"description": "vip账号分享",
-	"appid": "wxb41ed88dc31b49d4",
+	"appid": "wx8f2191e36a4aa918",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
